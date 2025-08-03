@@ -7,18 +7,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/passkey")
-  .then(() => console.log("Connected to DB"))
-  .catch(() => console.log(" Failed to connect to DB"));
+mongoose.connect("mongodb+srv://srilatha:123@cluster0.2ar1omf.mongodb.net/passkey?retryWrites=true&w=majority&appName=Cluster0")
+  .then(() => console.log("✅ Connected to MongoDB Atlas"))
+  .catch((err) => console.log("❌ MongoDB connection error:", err));
 
-// API Route
 app.post("/sendemail", sendBulkEmail);
 
-// Start Server
+// ✅ Start server
 app.listen(5000, () => {
-  console.log("Server running on port 5000");
+  console.log("🚀 Server running on port 5000");
 });
+
 
 
 
